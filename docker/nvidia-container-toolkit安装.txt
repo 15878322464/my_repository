@@ -1,0 +1,3 @@
+有GPU的情况下是需要另外安装另外的包的，不然docker里无法使用GPU，此处以最常用的NvidiaGPU为例
+https://blog.csdn.net/Dancen/article/details/125687417
+好像直接apt安装就行

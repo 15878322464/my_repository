@@ -1,0 +1,42 @@
+必须设置的基础选项：
+cmake_minimum_required(VERSION 2.8.11)  //设置需要的cmake最低版本号
+project(BinaryReader)  //项目名称，自定义
+
+set是设置环境变量
+编译器设置
+SET(CMAKE_C_COMPILER "/usr/bin/gcc")  //指定c编译器
+SET(CMAKE_CXX_COMPILER "/usr/bin/g++")  //指定c++编译器
+
+cpp文件：
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/logic/sqlite3 SRC_LIST)//搜集所有在指定路径下的源文件的文件名，并将输出结果列表储存在指定的变量中，同一个cmake里的相同变量可以一直添加搜集到的文件名。注意，目录不能遍历子目录。
+
+file(GLOB_RECURSE SRC_LIST src/*.cpp src/*.h)//将src目录下的所有.cpp和.h后缀的文件都存入SRC_LIST 变量中。
+
+
+头文件：
+include_directories(  //该变量
+    ${PROJECT_SOURCE_DIR}/include  //cmake自带变量
+    "/usr/include/eigen3/"  //本地的源代码路径
+    ${OpenCV_INCLUDE_DIRS}  //第三方库的变量，使用他的前提是要先安装对应库以及find_package找到它
+)
+把所有头文件跟cpp文件全部正确的加入进来
+
+link_directories（）
+
+find_package(OpenCV REQUIRED)  //
+
+add_library(${PROJECT_NAME} 
+    src/database.cc
+)
+//创建库
+
+add_executable(database_reader database_reader.cc)
+target_link_libraries(database_reader ${PROJECT_NAME} sqlite3 ${OpenCV_LIBS} )
+
+
+
+cmake通用变量：
+如果出现${OpenCV_INCLUDE_DIRS}类似的第三方库名的变量，那就是find_package()之后找到的相关库的cmake配置文件里的变量，具体的变量可以到/usr/local/lib/cmake相关库库文件里查看.cmake文件内容
+${PROJECT_SOURCE_DIR}  //工程根目录，也就是定义项目名称的第一层CMakeList.txt的父目录
+${PROJECT_NAME}  //自定义的项目名
+${PROJECT_BINARY_DIR}  //是CMake生成一系列文件的目录，如果是在build中cmake那就是对应的...../build

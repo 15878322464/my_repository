@@ -1,0 +1,1 @@
+curl https://nodejs.org/dist/v11.5.0/node-v11.5.0-x64.msi -o node.msi

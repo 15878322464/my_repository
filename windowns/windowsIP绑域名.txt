@@ -1,0 +1,3 @@
+@echo off
+cd C:\Windows\System32\drivers\etc
+echo 10.10.20.72 git.gitt.com >> hosts

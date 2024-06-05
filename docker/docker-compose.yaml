@@ -1,0 +1,25 @@
+# 最基础最常用的命令：
+version: '3.5' #使用的docker-compose版本
+services:  #服务声明
+  gocv: #服务名
+    image: gocv/opencv:4.7.0-ubuntu-20.04 #依赖的基础镜像
+    container_name: gocv #容器名
+    privileged: true #真正获取管理员权限
+    restart: unless-stopped #非正常关闭时一直尝试重启
+    environment: #环境变量配置
+      TZ: Asia/Shanghai #时区
+      LANG: "C.UTF-8" #字符格式
+    command: tail -F anything #命令
+    ports: #端口映射
+      - 3344:3344
+    networks: #该容器的网络配置
+      extnetwork: #分配的网络
+        ipv4_address: 172.111.0.2 #ipv4网址
+    volumes: #挂载数据卷
+      - "./root/mysql/data/:/var/lib/mysql/" #前面是宿主机路径，后面是容器路径，注意如果容器中的mysal如果有文件将会被全部删除覆盖data里的文件，data文件夹不会被复制进去
+networks: #全局网络配置
+  extnetwork:
+    name: "M-networks"
+    ipam:
+      config:
+        - subnet: 172.111.0.0/16

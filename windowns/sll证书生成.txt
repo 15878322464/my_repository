@@ -1,0 +1,30 @@
+mkdir -p /tmp/https_crt && cd /tmp/https_crt
+mkdir -p ./demoCA/newcerts 
+touch ./demoCA/index.txt
+echo 00 > ./demoCA/serial
+
+cat>https.conf<<EOF
+[ req ]
+default_bits = 4096
+prompt = no
+default_md = sha256
+distinguished_name = req_distinguished_name
+[ req_distinguished_name ]
+C = CN
+ST = yourstate
+L = yourcity
+O = yourcommpany
+OU = yourcommpany
+CN = yourdomain.com
+EOF
+
+openssl genrsa -out ca.key 4096
+openssl req -new -x509 -days 3650 -key ca.key -out ca.crt -config https.conf
+openssl genrsa -out server.pem 4096
+openssl rsa -in server.pem -out server.key
+openssl req -new -key server.pem -out server.csr -config https.conf
+
+openssl ca -policy policy_anything -days 3650 -cert ca.crt -keyfile ca.key -in server.csr -out server.crt<<EOF
+y
+y
+EOF
