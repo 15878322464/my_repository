@@ -56,6 +56,9 @@ git log --since="2023-01-01" --until="2023-12-31":显示从2023-1-1到2023-12-31
 git log -p:查看每次提交之间的详细差异信息
 git log file // 只显示包含指定文件的记录
 git log commitID // 从该commitID开始显示
+
+git log HEAD..origin/main // 显示远程分支 origin/main 上有而本地分支没有的提交,交换一下位置就是本地有而远程没有的提交
+
 ```
 
 ### 远程仓库与本地仓库
@@ -182,6 +185,8 @@ git diff branch1 branch2 // 查看两个指定分支的差异
 git diff --name-only commit1 commit2 // 仅查看两个指定commit之间发生变化的文件名(不显示具体内容)
 git diff -p commit1 commit2 // 显示详细的差异信息
 git diff commit1 commit2 -- 文件名 // 两次commit之间的单个文件差异
+
+git diff HEAD..origin/main // 显示所有在远程分支 origin/main 上的更改，但不包括在本地分支 HEAD 中的更改,同样的，反之亦然
 ```
 
 ### 暂存
@@ -195,6 +200,34 @@ git stash pop // 恢复最近一次保存的更改，并将其从 stash 列表�
 git stash drop stash@{1} // 删除特定的stash 
 git stash clear // 清空所有stash
 git stash push -m "Your stash message" -k // 保存未暂存的更改(不包括已暂存的)
+```
+### 移除跟踪
+```cpp
+// git rm --cached 移除跟踪，移除git add或者git commit(?)的文件，但是不会改变其内容。历史记录会保留，所以git rm --cached后记得重新commit更新一下仓库。要想重新跟踪，再add和commit即可
+git rm --cached 文件名 // 移除单个文件
+git rm --cached *.log // 使用通配符移除多个文件
+git rm --cached -r directory // 递归移除整个目录的文件
+```
+
+### 更新
+```cpp
+// git fetch 更新远程仓库的代码到本地，只下载到本地，不合并
+git fetch // 获取默认远程仓库(origin)的所有远程分支的更新
+git fetch 仓库名 // 获取指定远程仓库的所有分支更新
+git fetch 仓库名 分支名 // 获取指定远程仓库的指定分支更新
+git fetch --all // 从所有配置的远程仓库获取所有分支和标签的更新
+```
+
+### 追踪代码变更历史
+```cpp
+git blame 文件名// 查看所有行的变更信息，主要包括"修改这行的代码的作者"、"最后一次被修改的时间"
+git blame -L 1,10 example.txt  // 显示指定范围内的行变更信息
+git blame -e // 显示电子邮件而不是显示用户名
+git blame -c // 显示更详细的提交信息
+git blame -w // 忽略空白符的更改，在代码格式化导致的多行变化时很有用
+git blame --since="2 weeks ago" --until="1 week ago" example.txt // 显示指定时间范围内的变更
+git blame -M example.txt // 跟踪文件移动或重命名后的变更
+git blame -C example.txt // 跟踪文件内容的复制
 ```
 
 <a id="cylc"></a>
