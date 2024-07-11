@@ -40,6 +40,26 @@ add_library(${PROJECT_NAME} STATIC # SHARED | MODULE 可指定链接为静态库
     ......
 )
 
+add_custom_target(Name # 自定义目标名称
+                  [ALL] # 可选，如果指定，目标将被添加到默认构建目标中，即当你执行 make 时，这个目标也会被构建。
+                  [COMMAND command2 [args2...] ...] # 指定要执行的命令和其参数。可以指定多个 COMMAND。
+                  [DEPENDS depend...] # 指定目标的依赖项，可以是文件名或目标文件路径。这个目标会在依赖项更新后重新执行。
+                  [BYPRODUCTS [files...]] # 指定命令生成的文件(cmake3.2+)。这样，CMake 就能知道这些文件是由这个目标生成的，从而进行正确的依赖管理。
+                  [WORKING_DIRECTORY dir] # 指定命令执行时的工作目录。
+                  [COMMENT comment] # 指定一个描述命令的注释。这个注释会在构建时显示。
+                  [VERBATIM] # 逐行执行，如果指定，CMake 将对命令参数进行适当的转义。建议始终使用这个选项以确保命令正确执行
+                  [USES_TERMINAL] # 使用终端 如果指定，命令将在终端中运行，这对于需要用户交互的命令是必要的。
+                  [COMMAND_EXPAND_LISTS] # 命令拓展列表，如果指定，命令参数中的列表变量将展开为多个参数。
+                  [SOURCES src1 [src2 ...]] # 指定与目标相关联的源文件。这些文件不会直接编译，但可能会用于 IDE 的项目文件生成。
+)
+# 示例
+add_custom_command(
+    ${carsetting_target} ALL
+    COMMAND ${carconfig_script} -S ${carconfig_src_path} -D ${carconfig_dst_path}
+    DEPENDS ${main_make_method_script} ${carconfig_script}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/srcipt
+)
+
 # 把头文件包含进来：
 include_directories(
     ${PROJECT_SOURCE_DIR}/include  # 源代码目录下的头文件引用

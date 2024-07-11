@@ -112,3 +112,10 @@ cout<<arr<<endl; // 输出的是第一个元素，也就是第一个数组的地
 cout<<*arr<<endl; // 与arr相同
 cout<<**arr<<endl; // 1
 ```
+
+// 指针判空的方式
+```cpp
+point=0/null // 不建议使用了，0和null本质上还是整数，会引发混淆
+point=nullptr // 好理解，但是相对于if判断会有一点点冗长
+if(point) // 简洁，但是可能有时不太好理解
+```
