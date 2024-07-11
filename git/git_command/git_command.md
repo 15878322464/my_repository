@@ -59,6 +59,7 @@ git log commitID // 从该commitID开始显示
 
 git log HEAD..origin/main // 显示远程分支 origin/main 上有而本地分支没有的提交,交换一下位置就是本地有而远程没有的提交
 
+git log -L 345,357:./path // 查看固定代码段的提交更改历史
 ```
 
 ### 远程仓库与本地仓库
@@ -181,6 +182,7 @@ git submodule add <子模块仓库URL> <子模块在付仓库的存储目录> //
 git diff commit // 查看当前工作目录与指定commit之间的差异
 git diff commit1 commit2 // 查看两个指定commit的差异
 git diff --cached commit // 查看当前暂存区与指定commit的差异
+git diff --cached fileName // 查看当前add缓存的文件与之未更改之前的不同。
 git diff branch1 branch2 // 查看两个指定分支的差异
 git diff --name-only commit1 commit2 // 仅查看两个指定commit之间发生变化的文件名(不显示具体内容)
 git diff -p commit1 commit2 // 显示详细的差异信息
