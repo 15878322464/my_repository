@@ -3,7 +3,7 @@
 > 大光源，是主要的室外光源，是有向的，模拟从无限远的源头处发出的光线。这意味着此光源投射出的阴影均为平行，因此适用于模拟太阳光
 
 > 他与放置位置无关，调节y轴旋转是上下移动，可调节成不同时间段的光照，调节z轴是左右移动，具体属性如下：
-### <b>light</b>
+### <b>light（光源）</b>
 #### Source Angle（光源角度）
 > 光源对着的角度，以度数为单位。默认为0.5357，这是太阳的角度，数值越大光源越大。  
 具体效果是在阴影里表现，是硬直过度阴影还是柔化过度阴影  
@@ -167,62 +167,129 @@ Bloom Max Brightness（泛光最高亮度）
 > 应用曝光之后，此值将约束场景颜色亮度。
 
 Bloom Tint（泛光着色）  
+> 对光束发出的泛光效果进行着色时所使用的颜色。
 
 Advanced  
 
-### Cascaded Shadow Maps
-Num Dynamic Shadow Cascades  
-Distribution Exponent  
-Transition Fraction  
-Distance Fadeout Fraction  
-Dynamic Shadow Distance MovableLight  
-Dynamic Shadow Distance StationaryLight  
-Advanced: Inset Shadows For Movable Objects &nbsp; | &nbsp; Far Shadow Cascade Count &nbsp; | &nbsp; Far Shadow Distance  
+### Cascaded Shadow Maps（级联阴影贴图）
+Num Dynamic Shadow Cascades（动态阴影级联数）  
+> 为整个场景将视锥体拆分成的级联数。
 
-#### Distance Field Shadows
-DistanceField Shadow Distance  
-Distance Field Shadows  
-Advanced: DistanceField Trace Distance &nbsp; | &nbsp; Ray Start Offset Depth Scale  
+Distribution Exponent（分布指数）  
+> 控制级联是分布在更靠近摄像机（指数较大）还是更远离摄像机（指数较小）的位置。
 
-#### Ray Tracing
-Shadow Source Angle Factor  
-Samples Per Pixel  
+Transition Fraction（过渡部分）  
+> 级联之间消退区域的比例。
 
-#### Atmosphrer and Cloud
-Atmosphere Sun Light  
-Cast Shadows on Clouds  
-Cast Shadows on Atmosphere  
-Cast Cloud Shadows  
-Cloud Scattered Luminance Scale  
-Advanced: Atmosphere Sun Light Index  
+Distance Fadeout Fraction（距离淡出部分）  
+> 控制动态阴影影响远端淡出区域的大小。
 
-#### Performance
-Max Draw Distance  
-Max Distance Fade Range  
+Dynamic Shadow Distance MovableLight（可移动光源动态阴影距离）  
+> 可移动光源 级联阴影贴图（Cascaded Shadow Map） 动态阴影将覆盖的距离，从摄像机位置开始测量。
 
-#### Light Function
-Light Function Material  
-Light Function Scale  
-Fade Distance  
-Disabled Brightness  
+Dynamic Shadow Distance StationaryLight（固定光源动态阴影距离）  
+> 固定光源 级联阴影贴图（Cascaded Shadow Map） 动态阴影将覆盖的距离，从摄像机位置开始测量。
 
-#### Tags
-Component Tags  
+#### Advanced
+Inset Shadows For Movable Objects（可移动对象的内嵌阴影）  
+> （仅限固定光源）是否为可移动组件使用逐对象内嵌阴影，即使启用了级联阴影贴图也同样如此。  
+Far Shadow Cascade Count（远距离阴影级联计数）  
+> 值为0时表示没有远距离阴影级联。  
+Far Shadow Distance（远距离阴影距离）  
+> 远距离阴影级联应结束的距离。
 
-#### Cooking
-Is Editor Only  
-Advanced: Is Editor Only Actor  
+### Distance Field Shadows（距离场阴影）
+DistanceField Shadow Distance（）  
+> 
+Distance Field Shadows（）  
+> 
+Advanced: DistanceField Trace Distance（）  
+> 
+Ray Start Offset Depth Scale（）  
+> 
 
-#### HLOD
-Include Actor in HLOD  
+#### Ray Tracing（）
+Shadow Source Angle Factor（）  
+> 
+Samples Per Pixel（）  
+> 
 
-#### Actor
-Can be Damaged  
-Initial Life Span  
-Spawn Collision Handling Method  
-Actor Guid  
-1 selected in  
-Convert Actor  
+### Atmosphrer and Cloud（大气和云层）
+Atmosphere Sun Light（大气日光）  
+> 定向光源是否能够与大气及云层相互作用并生成视觉上的日轮——这些共同组成了视觉上的天空。  
+Cast Shadows on Clouds（在云层上投射阴影）  
+> 光源是否应该将不透明对象的阴影投射在云层上。如果场景中存在第二个定向光源（比如太阳或月亮），并且启用了 大气日光（Atmosphere Sun Light） 以及将 大气日常索引（Atmosphere Sun Light Index） 设置为 1，则该选项会被禁用。  
+Cast Shadows on Atmosphere（在大气上投射阴影）  
+> 使用SkyAtmosphere时，光源是否应该将不透明网格体的阴影投射到大气中。  
+Cast Cloud Shadows（投射云层阴影）  
+> 是否应该将云层的阴影投射到大气和其他场景元素上。
+Cloud Scattered Luminance Scale（云层散射亮度比例）  
+> 调整光线散射在云测参与介质（cloud participating media）中的光线贡献。有助于修正我们当前多重散射方案只是一种近似效果的问题。  
+#### Advanced
+Atmosphere Sun Light Index（大气日光索引）  
+> 引擎支持在任何时候显示两个大气光源来表示太阳和月亮，或者是两个太阳。使用此索引来设置主光源和副光源。例如，太阳是0，月亮是1。  
+Atmosphere Sun Disk Color Scale（大气日轮色标）  
+> 日轮亮度相乘的色标  
+Per Pixel Atmosphere Transmittance（逐像素大气透射）  
+> 是否在不透明网格体上应用逐像素大气透射，而非使用全局透射。  
+Cloud Shadow Strength（云层阴影强度）  
+> 阴影的强度。数值越高，光线阻挡越多。  
+Cloud Shadow on Atmosphere Strength（云层在大气上的阴影强度）
+> 大气上阴影的强度。设置为0时，会禁用大气上的阴影。  
+Cloud Shadow on Surface Strength（云层在表面上的阴影强度）  
+> 阴影在不透明和半透明表面上的强度。设置为0时，会禁用阴影在不透明和半透明表面上的强度。  
+Cloud Shadow Depth Bias（云层阴影深度偏移）  
+> 控制应用于体积云阴影贴图的前阴影深度的偏差。  
+Cloud Shadow Extent（云层阴影范围）  
+> 摄像机周围云层阴影贴图的世界空间半径。单位为千米（km）。  
+Cloud Shadow Map Resolution Scale（云层阴影贴图分辨率比例）  
+> 调整云层阴影贴图的分辨率。该分辨率受 r.VolumetricCloud.ShadowMap.MaxResolution 的限制。  
+Cloud Shadow Ray Sample Count Scale（云层阴影射线取样数比例）  
+> 调整用于阴影贴图追踪的取样数。该参数受到 r.VolumetricCloud.ShadowMap.RaySampleMaxCount 的限制。  
+
+### Performance（）
+Max Draw Distance（）  
+> 
+Max Distance Fade Range（）  
+> 
+
+### Light Function（）
+Light Function Material（）  
+> 
+Light Function Scale（）  
+> 
+Fade Distance（）  
+> 
+Disabled Brightness（）  
+> 
+
+### Tags（）
+Component Tags（）  
+> 
+
+### Cooking（）
+Is Editor Only（）  
+> 
+Advanced: Is Editor Only Actor（）  
+> 
+
+### HLOD（）
+Include Actor in HLOD（）  
+> 
+
+### Actor（）
+Can be Damaged（）  
+> 
+Initial Life Span（）  
+> 
+Spawn Collision Handling Method（）  
+> 
+Actor Guid（）  
+> 
+1 selected in（）  
+> 
+Convert Actor（）  
+> 
 Advanced: Find Camera Component when View Target &nbsp; | &nbsp; Ignores Origin Shifting &nbsp; | &nbsp; Can be in Cluster
 
 #### 
