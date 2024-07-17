@@ -4,36 +4,36 @@
 
 > 他与放置位置无关，调节y轴旋转是上下移动，可调节成不同时间段的光照，调节z轴是左右移动，具体属性如下：
 ### <b>light（光源）</b>
-#### Source Angle（光源角度）
+Source Angle（光源角度）
 > 光源对着的角度，以度数为单位。默认为0.5357，这是太阳的角度，数值越大光源越大。  
 具体效果是在阴影里表现，是硬直过度阴影还是柔化过度阴影  
 当使用距离场阴影时，此参数会决定距离场阴影的边缘软度。  
 
-#### Source Soft Angle（光源软角度）
+Source Soft Angle（光源软角度）
 > 影响光源的柔化程度
 
-#### User Temperature（使用温度）
+User Temperature（使用温度）
 > 黑体光源的色温，以开氏度为单位。白色是6500K。不勾选的话光照颜色就是白色，与“Light Color”有较为相似的效果，但其不能呈现多彩的颜色，以冷暖色调为主。
 
-#### Affects World（影响场景）
+Affects World（影响场景）
 > 意思是是否对该场景产生影响，如果取消勾选，则会造成禁用该光源的效果
 
-#### Cast Shadows（投射阴影） 
+Cast Shadows（投射阴影） 
 > 是否投射阴影
 
-#### Indirect Lighting Intensity（间接光照强度）
+Indirect Lighting Intensity（间接光照强度）
 > 缩放光源发出的间接光照贡献。数值越大阴影处越亮
 
-#### Volumetric Scattering Intensity（体积散射强度）
+Volumetric Scattering Intensity（体积散射强度）
 > 光源在体积雾中的体积光散射强度，数值越大散射越强，远能见度越低。
 
-#### Intensity（强度）
+Intensity（强度）
 > 默认太阳强度为110000.0 lux
 
-#### Light Color（光源颜色）
+Light Color（光源颜色）
 > 光源颜色调节
 
-#### <b>Advanced</b>
+#### Advanced
 Shadow Cascade Bias Distribution（阴影级联偏差分布）  
 > 动态阴影精度
 
@@ -128,11 +128,11 @@ Actor Hidden In Game（隐藏在游戏中的该Actor）
 Editor Billboard Scale（编辑Billboard缩放）  
 > 控制该光源本身的大小缩放，Billboard就是我们创建蓝图时那个包裹物体的白色球
 
-#### Advanced（高级选项）
+Advanced（高级选项）
 > Use Attach Parent Bound（使用父节点绑定）  
 网格体的连接方式
 
-### Lightmass（全局光照）
+### <b>Lightmass（全局光照）</b>
 Light Source Angle（光源角度）  
 > 定向光源的自发光表面相对于接收物而延展的角度，影响半影尺寸。
 
@@ -145,9 +145,10 @@ Shadow Exponent（阴影指数）
 Use Area Shadows for Stationary Light（将区域阴影用于固定光源）  
 > 数值为0时将完全去除此光照在Lightmass中的饱和度，为1时则保持不变
 
-### Light Shafts（光束）  
+### <b>Light Shafts（光束）</b>  
 #### Light Shaft Occlusion（光束遮挡）
 > 确定此光源是否会对雾气和大气之间的散射形成屏幕空间模糊遮挡。
+
 Occlusion Mask  Darkness（遮挡遮罩暗度）  
 > 控制遮挡遮罩的暗度，值为1则无暗度。
 
@@ -169,9 +170,11 @@ Bloom Max Brightness（泛光最高亮度）
 Bloom Tint（泛光着色）  
 > 对光束发出的泛光效果进行着色时所使用的颜色。
 
-Advanced  
+#### Advanced  
+Light Shaft Override Direction  
+> 
 
-### Cascaded Shadow Maps（级联阴影贴图）
+### <b>Cascaded Shadow Maps（级联阴影贴图）</b>
 Num Dynamic Shadow Cascades（动态阴影级联数）  
 > 为整个场景将视锥体拆分成的级联数。
 
@@ -193,112 +196,163 @@ Dynamic Shadow Distance StationaryLight（固定光源动态阴影距离）
 #### Advanced
 Inset Shadows For Movable Objects（可移动对象的内嵌阴影）  
 > （仅限固定光源）是否为可移动组件使用逐对象内嵌阴影，即使启用了级联阴影贴图也同样如此。  
+
 Far Shadow Cascade Count（远距离阴影级联计数）  
 > 值为0时表示没有远距离阴影级联。  
+
 Far Shadow Distance（远距离阴影距离）  
 > 远距离阴影级联应结束的距离。
 
-### Distance Field Shadows（距离场阴影）
+### <b>Distance Field Shadows（距离场阴影）</b>
 DistanceField Shadow Distance（）  
 > 
+
 Distance Field Shadows（）  
 > 
-Advanced: DistanceField Trace Distance（）  
+
+#### Advanced
+DistanceField Trace Distance（）  
 > 
+
 Ray Start Offset Depth Scale（）  
 > 
 
-#### Ray Tracing（）
+### <b>Ray Tracing（）</b>
 Shadow Source Angle Factor（）  
 > 
+
 Samples Per Pixel（）  
 > 
 
 ### Atmosphrer and Cloud（大气和云层）
 Atmosphere Sun Light（大气日光）  
 > 定向光源是否能够与大气及云层相互作用并生成视觉上的日轮——这些共同组成了视觉上的天空。  
+
 Cast Shadows on Clouds（在云层上投射阴影）  
 > 光源是否应该将不透明对象的阴影投射在云层上。如果场景中存在第二个定向光源（比如太阳或月亮），并且启用了 大气日光（Atmosphere Sun Light） 以及将 大气日常索引（Atmosphere Sun Light Index） 设置为 1，则该选项会被禁用。  
+
 Cast Shadows on Atmosphere（在大气上投射阴影）  
 > 使用SkyAtmosphere时，光源是否应该将不透明网格体的阴影投射到大气中。  
+
 Cast Cloud Shadows（投射云层阴影）  
 > 是否应该将云层的阴影投射到大气和其他场景元素上。
 Cloud Scattered Luminance Scale（云层散射亮度比例）  
+
 > 调整光线散射在云测参与介质（cloud participating media）中的光线贡献。有助于修正我们当前多重散射方案只是一种近似效果的问题。  
+
 #### Advanced
 Atmosphere Sun Light Index（大气日光索引）  
-> 引擎支持在任何时候显示两个大气光源来表示太阳和月亮，或者是两个太阳。使用此索引来设置主光源和副光源。例如，太阳是0，月亮是1。  
+> 引擎支持在任何时候显示两个大气光源来表示太阳和月亮，或者是两个太阳。使用此索引来设置主光源和副光源。例如，太阳是0，月亮是1。
+
 Atmosphere Sun Disk Color Scale（大气日轮色标）  
 > 日轮亮度相乘的色标  
+
 Per Pixel Atmosphere Transmittance（逐像素大气透射）  
 > 是否在不透明网格体上应用逐像素大气透射，而非使用全局透射。  
+
 Cloud Shadow Strength（云层阴影强度）  
 > 阴影的强度。数值越高，光线阻挡越多。  
+
 Cloud Shadow on Atmosphere Strength（云层在大气上的阴影强度）
 > 大气上阴影的强度。设置为0时，会禁用大气上的阴影。  
+
 Cloud Shadow on Surface Strength（云层在表面上的阴影强度）  
 > 阴影在不透明和半透明表面上的强度。设置为0时，会禁用阴影在不透明和半透明表面上的强度。  
+
 Cloud Shadow Depth Bias（云层阴影深度偏移）  
 > 控制应用于体积云阴影贴图的前阴影深度的偏差。  
+
 Cloud Shadow Extent（云层阴影范围）  
 > 摄像机周围云层阴影贴图的世界空间半径。单位为千米（km）。  
+
 Cloud Shadow Map Resolution Scale（云层阴影贴图分辨率比例）  
 > 调整云层阴影贴图的分辨率。该分辨率受 r.VolumetricCloud.ShadowMap.MaxResolution 的限制。  
+
 Cloud Shadow Ray Sample Count Scale（云层阴影射线取样数比例）  
 > 调整用于阴影贴图追踪的取样数。该参数受到 r.VolumetricCloud.ShadowMap.RaySampleMaxCount 的限制。  
 
-### Performance（）
+### <b>Performance（）</b>
 Max Draw Distance（）  
 > 
+
 Max Distance Fade Range（）  
 > 
 
-### Light Function（）
+### <b>Light Function（）</b>
 Light Function Material（）  
 > 
+
 Light Function Scale（）  
 > 
+
 Fade Distance（）  
 > 
+
 Disabled Brightness（）  
 > 
 
-### Tags（）
+### <b>Tags（）</b>
 Component Tags（）  
 > 
 
-### Cooking（）
+### <b>Cooking（）</b>
 Is Editor Only（）  
 > 
+
 Advanced: Is Editor Only Actor（）  
 > 
 
-### HLOD（）
+### <b>HLOD（）</b>
 Include Actor in HLOD（）  
 > 
 
-### Actor（）
+### <b>Actor（）</b>
 Can be Damaged（）  
 > 
+
 Initial Life Span（）  
 > 
+
 Spawn Collision Handling Method（）  
 > 
+
 Actor Guid（）  
 > 
+
 1 selected in（）  
 > 
+
 Convert Actor（）  
 > 
-Advanced: Find Camera Component when View Target &nbsp; | &nbsp; Ignores Origin Shifting &nbsp; | &nbsp; Can be in Cluster
 
-#### 
+#### Advanced
+Find Camera Component when View Target  
+> 
 
-#### 
+Ignores Origin Shifting  
+> 
 
-#### 
+Can be in Cluster  
+> 
 
+Pivot Offset  
+> 
 
+Layers  
+>
+
+tags  
+> 
+
+### <b>LOD</b>
+#### Advanced
+Detail Mode  
+> 
+
+### <b>Asset USer Data</b>
+#### Advanced
+Asset User Data
+> 
 
 ## 天空光照（Sky Light） 
 > 大光源，捕捉场景的背景并将其应用于关卡的几何体。
