@@ -15,7 +15,7 @@ Source Cubemap Angle（源立方体贴图角度）
 > 
 
 Cubemap Resolution（立方体分辨率）
->
+> 数值越大，捕捉的玻璃、水等反射画面越精准
 
 Sky Distance Threshold（天空距离阈值）
 > 

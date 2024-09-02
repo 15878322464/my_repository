@@ -180,15 +180,15 @@ Distance Field Shadows（距离场阴影）
 Ray Start Offset Depth Scale（光线开始偏移深度范围）
 > 
 
-## <b>（光线追踪）</b>
+## <b>RayTracing（光线追踪）</b>
 Samples Per Pixel（逐像素采样）
 > 
 
-## <b>（标签）</b>
+## <b>Tags（标签）</b>
 Component Tags（组件标签）
 > 
 
-## <b>（烘焙）</b>
+## <b>Cooking（烘焙）</b>
 Is Editor Only（为纯编辑器）
 > 
 
@@ -253,7 +253,7 @@ Tags（标签）
 Detail Mode（详细模式）
 > 
 
-## <b>（资产用户数据）</b>
+## <b>AssetUserData（资产用户数据）</b>
 ### Advanced
 Asset User Data（资产用户数据）
 > 

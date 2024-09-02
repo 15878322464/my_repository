@@ -116,7 +116,7 @@ Min Brightness（最低亮度）
 > 
 
 Max Brightness（最高亮度）
-> 
+> 数值越小亮度越爆
 
 Speed Up（加速）
 > 

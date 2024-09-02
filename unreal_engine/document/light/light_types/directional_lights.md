@@ -304,46 +304,46 @@ Is Editor Only（）
 Advanced: Is Editor Only Actor（）  
 > 
 
-### <b>HLOD（）</b>
-Include Actor in HLOD（）  
+### <b>HLOD</b>
+Include Actor in HLOD（在HLOD中包含Actor）  
 > 
 
-### <b>Actor（）</b>
-Can be Damaged（）  
+### <b>Actor</b>
+Can be Damaged（可被伤害）
 > 
 
-Initial Life Span（）  
+Initial Life Span（初始生命周期）
 > 
 
-Spawn Collision Handling Method（）  
+Spawn Collision Handling Method（生成碰撞处理方法）
 > 
 
-Actor Guid（）  
+Actor Guid（Actor标识码）
 > 
 
-1 selected in（）  
+1 selected in（在关卡中一个已选中）
 > 
 
-Convert Actor（）  
+conver Actor（转换Actor）
 > 
 
-#### Advanced
-Find Camera Component when View Target  
+### Advanced
+Find Camera Component when View Target（查看目标时寻找摄像机组件）
 > 
 
-Ignores Origin Shifting  
+Ignores Origin Shifting（忽略原点偏移）
 > 
 
-Can be in Cluster  
+Can be in Cluster（可存在于群集中）
 > 
 
-Pivot Offset  
+Pivot Offset（枢轴偏移）
 > 
 
-Layers  
->
+Layers（图层）
+> 
 
-tags  
+Tags（标签）
 > 
 
 ### <b>LOD</b>

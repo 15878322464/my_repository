@@ -1,4 +1,4 @@
-# 天空大气
+# SkyAtmosphere天空大气
 ## <b>（星球）</b>
 Transform Mode（变换模式）
 > 
@@ -96,7 +96,7 @@ Editor Billboard Scale（编辑器公告板缩放）
 Use Attach Parent Bound（使用附加父边界）
 > 
 
-## <b>（标签）</b>
+## <b>Tags（标签）</b>
 Component Tags（组件标签）
 > 
 
@@ -104,7 +104,7 @@ Component Tags（组件标签）
 Auto Activate（自动启用）
 > 
 
-## <b>（烘焙）</b>
+## <b>Cooking（烘焙）</b>
 Is Editor Only（为纯编辑器）
 > 
 
@@ -112,7 +112,7 @@ Is Editor Only（为纯编辑器）
 Is Editor Only Actor（为纯编辑器Actor）
 > 
 
-## <b>（复制）</b>
+## <b>Replication（复制）</b>
 Net Load on Client（客户端上的网络加载）
 > 
 
@@ -164,7 +164,7 @@ Should Update Physics Volume（应更新物理体积）
 Detail Mode（详细模式）
 > 
 
-## <b>（资产用户数据）</b>
+## <b>AssetUserData（资产用户数据）</b>
 ### Advanced
 Asset User Data（资产用户数据）
 > 
