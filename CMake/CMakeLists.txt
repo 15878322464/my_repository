@@ -8,15 +8,16 @@
 # 必须设置的基础选项：
 cmake_minimum_required(VERSION 2.8.11)  # 设置需要的cmake最低版本号
 project(BinaryReader)  # 项目名称，自定义
+set(CXX_STANDARD 11) # 指定c++版本
 
 # set是设置环境变量
-SET(CMAKE_C_COMPILER "/usr/bin/gcc")  # 指定c编译器路径
-SET(CMAKE_CXX_COMPILER "/usr/bin/g++")  # 指定c++编译器路径
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/app) # 设置
+set(CMAKE_C_COMPILER "/usr/bin/gcc")  # 指定c编译器路径
+set( "/uCMAKE_CXX_COMPILER /usr/bin/g++")  # 指定c++编译器路径
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/app) # 设置编译好的进程的输出目录,默认在CMakeLists.txt同级目录下
 
 # 收集源cpp文件路径:
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/logic/sqlite3 SRC_LIST) # 搜集所有在指定路径下的源文件的文件名,并将输出结果列表储存在指定的变量中,同一个cmake里的相同变量可以一直添加搜集到的文件名。注意,不能递归遍历搜索
-file(GLOB_RECURSE SRC_LIST src/*.cpp src/*.h) # 将src目录下的所有.cpp和.h后缀的文件都存入SRC_LIST 变量中。
+file(GLOB_RECURSE SRC_LIST src/*.cpp src/*.h) # 将src目录下的所有.cpp和.h后缀的文件路径名都存入SRC_LIST 变量中。比上面的aux灵活，aux只能添加cpp和.h这些固定文件
 
 # 添加链接库时的搜索目录，cmake编译时默认只在系统库/usr/lib或者本地库/usr/local/lib去找，如果项目中有用到安装在其他路径的库,记得添加进来
 link_directories(/path/to/lib1 /path/to/lib2)
